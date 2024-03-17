@@ -14,7 +14,7 @@ name = "Melaton"
 [params]
 author = "Melaton"
 description = "Melaton's personal blog"
-dateFormat = "2008-07-24"
+dateFormat = "2006-01-02"
 paginationSinglePost = true
 
 colorTheme = "auto"
