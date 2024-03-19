@@ -31,10 +31,10 @@ toc = true
 # Graphcomment support
 graphcommentId = ""
 
-GiscusRepo = "Junyi-99/hugo-theme-anubis2"
-GiscusRepoId = "R_kgDOLEp76Q"
+GiscusRepo = "HundSimon/blog"
+GiscusRepoId = "R_kgDOLhf84g"
 GiscusCategory = "General"
-GiscusCategoryId = "DIC_kwDOLEp76c4CcbPS"
+GiscusCategoryId = "DIC_kwDOLhf84s4CeElY"
 GiscusLazyLoad = false
 GiscusDataMapping = "pathname"
 
