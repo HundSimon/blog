@@ -36,4 +36,33 @@ TODO:
 
 由于本人更倾向在Linux环境下开发，所以本文的演示都会基于 Rider + Aseprite
 
-## 2.初始化模组
+## 2.Tmodloader 特有内容
+
+在开始前，本文还想简单提及一些对模组开发有帮助的内容、Tmodloader特有的内容以及一些对一些内容的介绍
+
+**强烈建议阅读完本部分后再阅读其余教学**
+
+### Hook
+
+在模组开发中，Tmodloader Hook 并非实际意义上的Hook函数，但与Hook函数有类似的作用，即可以更改(Override)其他函数的内容
+
+Tmodloader Hook 允许模组可以调用游戏/其他模组内的函数，更方便编写模组
+
+例如：
+
+我想更改原版这个函数的行为：
+
+```c#
+virtual void Terraria.ModLoader.ModItem.UpdateInventory	(Player player)	
+```
+
+于是我们可以在ModItem类里编写以下函数：
+
+```c#
+override void UpdateInventory (Player player)
+{
+    // We write code here.
+}
+```
+
+注意：由于这个函数处于ModItem类里，于是不需要使用`Terraria.ModLoader.ModItem.UpdateInventory`，使用UpdateInventory即可
