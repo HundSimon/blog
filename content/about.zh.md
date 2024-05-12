@@ -10,4 +10,4 @@ author: "Melaton"
 
 本博客可能会包括以下内容：技术分享、记录生活
 
-可以通过该rss链接订阅我的内容！[RSS](https://blog.melaton.top/index.xml)
+可以通过该rss链接订阅我的内容！[RSS](https://www.melaton.top/index.xml)
