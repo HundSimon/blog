@@ -1,8 +1,7 @@
 +++
 title = '在 Linux 下安装 Davinci Resolve Studio'
 date = 2024-05-12T15:52:23+08:00
-draft = False
-
+draft = false
 +++
 
 ```shell
