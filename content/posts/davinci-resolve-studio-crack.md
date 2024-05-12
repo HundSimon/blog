@@ -4,6 +4,7 @@ date = 2024-05-12T15:52:23+08:00
 draft = false
 +++
 
+<!--more-->
 ```shell
 yay -S davinci-resolve-studio
 
