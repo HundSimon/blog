@@ -1,13 +1,23 @@
 ---
 title: "About"
 description: "Introduction of myself"
-date: "2019-02-28"
+date: "2008-07-24"
 aliases: ["about-us","about-hugo","contact"]
 author: "Melaton"
 ---
 
 你好⭐我是Melaton
 
-本博客可能会包括以下内容：技术分享、记录生活
+## 介绍下
 
-可以通过该rss链接订阅我的内容！[RSS](https://www.melaton.top/index.xml)
+- 喜欢 Minecraft / Monster Hunter / Terraria
+
+## DEV
+
+- Manjaro + KDE
+- Pycharm + IDEA + Rider
+- Python / C# / Java / Go / 一点点前端开发
+
+## 维护项目
+
+- [TML-Manager](https://github.com/HundSimon/tml-manager) (仍处于早期开发阶段)
