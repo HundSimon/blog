@@ -8,9 +8,9 @@ author: "Melaton"
 
 你好⭐我是Melaton
 
-## 介绍下
+## Hello
 
-- 喜欢 Minecraft / Monster Hunter / Terraria
+- Minecraft / Monster Hunter / Terraria
 
 ## DEV
 
@@ -22,4 +22,4 @@ author: "Melaton"
 
 - [我的 API](https://www.melaton.top/api)
 
-- [TML-Manager](https://github.com/HundSimon/tml-manager) (仍处于早期开发阶段)
+- [TML-Manager](https://github.com/HundSimon/tml-manager)
