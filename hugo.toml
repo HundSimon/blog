@@ -4,6 +4,7 @@ defaultContentLanguage = "zh"
 title = "Melaton's Blog"
 theme = "anubis2"
 paginate = 3
+enableRobotsTXT = true
 
 disqusShortname = ""
 googleAnalytics = ""
