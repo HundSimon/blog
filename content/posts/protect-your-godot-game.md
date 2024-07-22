@@ -6,7 +6,7 @@ draft = false
 
 !!!WIP
 
-由于godot的开源，逆向变得易如反掌，本文会提供一些保护的方案，以及逆向时绕过这些保护的方法
+由于godot的开源，逆向变得易如反掌，本文会提供一些保护的方案
 
 <!--more-->
 
@@ -16,9 +16,7 @@ draft = false
 
 使用 **Table Of Contents** 快速跳转到你想看的内容
 
-永远没有绝对安全的保护，我们唯一能做的就是增加逆向的成本。
-
-买断制游戏建议推出试玩版，好玩的游戏自然会有人愿意掏钱
+永远没有绝对安全的保护，唯一能做的就是增加逆向的成本
 
 ## 基本知识
 
@@ -43,8 +41,6 @@ Godot 可以同时使用 C# 和 GDScript 编程，两者在使用时差别不大
 ## 基础防护
 
 ### PCK 密钥
-
-#### 加密
 
 这种是官方的加密方法，逆向相对简单，以下是操作方法
 
@@ -107,53 +103,77 @@ Godot 可以同时使用 C# 和 GDScript 编程，两者在使用时差别不大
    
    加密 - 加密导出的PCK - 加密密钥 填写前面生成的密钥
 
-#### 解密
-
-不幸的是，加密密钥可以被程序猜到
-
-[gdke](https://github.com/char-ptr/gdke) 可以猜测密码
-
 ### 代码混淆
-
-#### 加密
 
 建议使用现成的插件 [gdmaim](https://github.com/cherriesandmochi/gdmaim)
 
-#### 解密
-
-解包后的代码仍然可以运行，现代IDE都有字符串函数名重命名的能力，只要花时间在上面，就一定可以还原出大部分逻辑
-
 ### 使用 C#
 
-#### 加密
-
 因为目前大部分工具没办法还原完整的 C# 代码，所以使用 C# 是相对安全的选项
-
-#### 解密
-
-用 C# 反编译软件即可，如[dnSpy](https://github.com/dnSpyEx/dnSpy)
 
 ## 进阶防护
 
 ### 改引擎代码
 
-Godot 以 MIT 协议开源，所以我们可以放心修改引擎源码
+Godot 以 MIT 协议开源，所以我们可以放心修改引擎源码并且商用
 
-#### 自定义PCK加密
+#### 自定义PCK加解密
+
+在 `core/io/file_access_encrypted.cpp` 中，`open_and_parse` 负责pck的解密
+
+```cpp
+FileAccessEncrypted::open_andparse(Ref<FileAccess> p_base, const Vector<uint8_t> &p_key, Mode p_mode, bool p_with_magic) {
+```
+
+其中 `p_key`  是32字节的密钥
+
+你可以在这里对 `p_key`  进行处理，比如变换其中的字节、二次加密之类的，这样即使 gdke 能读取到密钥，也无法用 gdsdecomp 解包，因为游戏在使用密钥解密时有额外的处理
+
+如果想要更强的保护，我建议在编译 Godot Engine 时就进行混淆，这样逆向时就没办法轻易定位到 `open_andparse` 这个函数，建议在每个版本发布时都重新进行一次 Godot Engine 混淆，可以保证跨版本时更难进行修改
+
+### 伪装成 Unity 引擎
+
+别看这个有点搞笑，实践中还真能骗到不少人
+
+这是 il2cpp 打包的 Unity 游戏的结构
+
+```
+│  ExampleGame.exe
+│  GameAssembly.dll
+│  UnityCrashHandler64.exe
+│  UnityPlayer.dll
+│
+└─ExampleGame_Data
+    │  app.info
+    │  boot.config
+    │  resources.assets
+    |  ......
+    │
+    ├─il2cpp_data
+    │  ├─etc
+    │  │  └─mono
+    │  │      │  ......
+    │  │
+    │  ├─Metadata
+    │  │      global-metadata.dat
+    │  │
+    │  └─Resources
+    │          ......
+    │
+    └─.......
+```
+
+把 `ExampleGame.pck`  重命名成 `GameAssembly.dll`
+
+只要使用 `ExampleGame.exe --main-pack GameAssembly.dll`  启动，就可以加载 `GameAssembly.dll` 的内容
 
 ## 极端防护
 
 ### 加壳
 
-#### 加密
-
 这个没什么好说的，以性能为代价换取安全
 
-建议使用 [VMProtect](https://vmpsoft.com/) 的虚拟化和控制流混淆
-
-#### 逆向
-
-这个真没什么好办法，建议去看其他人写的脱壳文章
+建议使用 [VMProtect](https://vmpsoft.com/) 的虚拟化和控制流平坦化
 
 ## Credits
 
