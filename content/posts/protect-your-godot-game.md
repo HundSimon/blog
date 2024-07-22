@@ -38,6 +38,8 @@ GDScript 是 Godot 开发的编程语言
 
 Godot 可以同时使用 C# 和 GDScript 编程，两者在使用时差别不大，性能差距可以忽略，GDScript 更全能一些，C# 目前还不支持 Android 平台
 
+另外，GDScript 在运行时不会被编译，C# 会被编译。GDScript 在运行时会被 `GDScript VM` 调用并直接执行
+
 ## 基础防护
 
 ### PCK 密钥
@@ -58,19 +60,11 @@ Godot 可以同时使用 C# 和 GDScript 编程，两者在使用时差别不大
 
 2. 生成密钥
    
-   1. 访问这个网站 [Keygen](https://asecuritysite.com/encryption/keygen)
+   1. 下载 [openssl](https://www.openssl.org/source/)
    
-   2. passphase 瞎填，模式选 aes-256-cbc，然后 Generate Key
+   2. 使用 `openssl rand -hex 32` 生成密钥 如`f91476533bd554c408e3d03ec634da97ee5e6ccae009dc8062dd39cbd23fa3fc`
    
-   3. 获得像这样的结果：
-   
-   ```
-   salt=B456CFE46DB5BACE
-   key=FF34295A677DB38784EAAD79E9C41AC1816C232DBF85C8D1
-   iv =2BDD0D132A3EB385E932112E5B353B82
-   ```
-   
-   4. 保存好这个结果
+   3. 保存好这个密钥
 
 3. 获取源码
    
@@ -85,27 +79,31 @@ Godot 可以同时使用 C# 和 GDScript 编程，两者在使用时差别不大
    2. 如果不需要 C# 功能：
       
       ```shell
-      scons platform=windows use_mingw=yes arch=x86_64 target=template_release use_llvm=true mingw64_prefix=x86_64-w64-mingw32-```
+      scons platform=windows target=template_release
       ```
       
       如果需要 C#：
       
       ```shell
-      scons platform=windows use_mingw=yes arch=x86_64 target=template_release use_llvm=true mingw64_prefix=x86_64-w64-mingw32- module_mono_enabled=yes
+      scons platform=windows target=template_release module_mono_enabled=yes
       ```
+      
+      在命令后添加 -j 即可多线程编译，如 -j32 就是32线程
    
    3. 等待构建结束，结束后在 /bin 会有以下两个文件
       
       ```
-      godot.windows.template_release.x86_64.llvm.mono.console.exe
-      godot.windows.template_release.x86_64.llvm.mono.exe
+      godot.windows.template_release.x86_64.console.exe
+      godot.windows.template_release.x86_64.exe
       ```
+      
+      如果需要debug模式，则需要另外构建`target=template_debug`
 
 5. 使用构建模板
    
    项目 - 导出 - 添加 - Windows Desktop
    
-   选项 - 自定义模板 - 调试/发布 定位到你的 `godot.windows.template_release.x86_64.llvm.mono.exe`
+   选项 - 自定义模板 - 发布 定位到你的 `godot.windows.template_release.x86_64.exe`
    
    加密 - 加密导出的PCK - 加密密钥 填写前面生成的密钥
 
