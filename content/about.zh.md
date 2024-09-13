@@ -8,18 +8,10 @@ author: "Melaton"
 
 你好⭐我是Melaton
 
-## Hello
+## 各种链接
 
-- Minecraft / Monster Hunter / Terraria
-
-## DEV
-
-- Manjaro + KDE
-- Pycharm + IDEA + Rider
-- Python / C# / Java / Go / 一点点前端开发
+[Server Status](https://status.melaton.top)
 
 ## 维护项目
 
-- [我的 API](https://www.melaton.top/api)
-
-- [TML-Manager](https://github.com/HundSimon/tml-manager)
+[x-repost-telegram-bot](https://github.com/HundSimon/x-repost-telegram-bot) 从各种平台转发到telegram channel的bot 

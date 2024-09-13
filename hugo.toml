@@ -39,9 +39,11 @@ GiscusCategoryId = "DIC_kwDOLhf84s4CeElY"
 GiscusLazyLoad = false
 GiscusDataMapping = "pathname"
 
-[[params.social]]
-id = "github"
-url = "https://github.com/HundSimon"
+social = [
+    { id = "github", url = "https://github.com/HundSimon" },
+    { id = "email", url = "mailto:contact@melaton.top" },
+    { id = "telegram", url = "https://t.me/iammelaton" },
+]
 
 [languages.en]
 languageName = "English"
