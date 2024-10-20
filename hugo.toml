@@ -41,7 +41,7 @@ GiscusDataMapping = "pathname"
 
 social = [
     { id = "github", url = "https://github.com/HundSimon" },
-    { id = "email", url = "mailto:contact@melaton.top" },
+    { id = "email", url = "mailto:contact@melaton.dev" },
     { id = "telegram", url = "https://t.me/iammelaton" },
 ]
 
