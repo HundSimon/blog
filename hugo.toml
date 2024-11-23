@@ -9,11 +9,11 @@ enableRobotsTXT = true
 disqusShortname = ""
 googleAnalytics = ""
 
-[author]
+[params.author]
 name = "Melaton"
+location = "Singapore"
 
 [params]
-author = "Melaton"
 description = "Melaton's personal blog"
 dateFormat = "2006-01-02"
 paginationSinglePost = true
