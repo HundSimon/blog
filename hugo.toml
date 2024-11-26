@@ -3,15 +3,12 @@ languageCode = "zh-cn"
 defaultContentLanguage = "zh"
 title = "Melaton's Blog"
 theme = "anubis2"
-paginate = 3
+paginate = 10
 enableRobotsTXT = true
-
-disqusShortname = ""
-googleAnalytics = ""
 
 [params.author]
 name = "Melaton"
-location = "Singapore"
+location = "China"
 
 [params]
 description = "Melaton's personal blog"
@@ -107,5 +104,15 @@ category = "categories"
 tag = "tags"
 author = "authors"
 
+[markup]
+defaultMarkdownHandler = 'goldmark'
+
 [markup.goldmark.renderer]
-unsafe = true
+unsafe = true # Enable unsafe mode to have a better experience
+
+[markup.highlight]
+anchorLineNos      = false
+codeFences         = true # tested with true and false. Both work.
+noClasses          = true # If you run with markup.highlight.noClasses=false in your site configuration, you need a style sheet.
+style              = 'catppuccin-frappe' # Find more style at here: https://swapoff.org/chroma/playground/
+tabWidth           = 4
