@@ -14,4 +14,6 @@ author: "Melaton"
 
 ## 维护项目
 
-[x-repost-telegram-bot](https://github.com/HundSimon/x-repost-telegram-bot) 从各种平台转发到telegram channel的bot 
+[x-repost-telegram-bot](https://github.com/HundSimon/x-repost-telegram-bot) 从各种平台转发到 telegram channel 的 bot 
+
+[MelaHack](https://github.com/HundSimon/MelaHack) 为最新版 Minecraft 打造的 HvH mod
