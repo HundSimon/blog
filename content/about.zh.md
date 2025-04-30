@@ -8,9 +8,8 @@ author: "Melaton"
 
 你好⭐我是Melaton
 
-## 各种链接
+写点东西给自己看
 
-[Server Status](https://status.melaton.top)
 
 ## 维护项目
 
