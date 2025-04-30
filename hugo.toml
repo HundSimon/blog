@@ -26,21 +26,38 @@ locale = "en-us"
 mathjax = false
 toc = true
 
-# Graphcomment support
-graphcommentId = ""
-
-GiscusRepo = "HundSimon/blog"
-GiscusRepoId = "R_kgDOLhf84g"
-GiscusCategory = "General"
-GiscusCategoryId = "DIC_kwDOLhf84s4CeElY"
-GiscusLazyLoad = false
-GiscusDataMapping = "pathname"
-
 social = [
     { id = "github", url = "https://github.com/HundSimon" },
     { id = "email", url = "mailto:contact@melaton.dev" },
     { id = "telegram", url = "https://t.me/iammelaton" },
 ]
+
+[params.anubis2]
+    enableMathGlobally = true # MathJax (default is false)
+    enableCopyCodeButton = true
+    enableReadMoreButton = true
+    hideFooterAttribution = false # hide "Powered by Hugo, theme" in footer
+    colorTheme = "auto"
+    enableColorThemeSwitcher = true
+
+    # police = "京公网安备 12345678号" # for China ICP police beian
+    # icp = "京ICP备xxxxx号-1" # for China ICP license
+
+    social = [
+        { id = "github", url = "https://github.com/HundSimon" },
+        { id = "email", url = "mailto:contact@melaton.dev" },
+        { id = "telegram", url = "https://t.me/iammelaton" },
+    ]
+
+    [params.anubis2.services]
+        [params.anubis2.services.giscus]
+            # Giscus Comment System https://giscus.app/
+            repo        = "HundSimon/blog"
+            repoId      = "R_kgDOLhf84g"
+            category    = "General"
+            categoryId  = "DIC_kwDOLhf84s4CeElY"
+            dataMapping = "pathname"
+            lazyLoad    = false
 
 [languages.en]
 languageName = "English"
