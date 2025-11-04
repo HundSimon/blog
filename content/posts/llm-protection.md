@@ -1,7 +1,7 @@
 +++
 title = '系统提示词防御指南'
 date = 2025-04-27T08:41:10+08:00
-draft = false
+draft = true
 
 +++
 
@@ -14,54 +14,58 @@ draft = false
 ## 正则防御
 
 首先提供一套我总结的正则
+
 ```js
-  const forbiddenPatterns = [
-    // English Patterns
-    /ignore.*instructions/i,
-    /ignore.*above/i,
-    /disregard.*instructions/i,
-    /system\s*prompt/i,
-    /your\s*instructions/i,
-    /your\s*rules/i,
-    /your\s*prompt/i,
-    /reveal.*prompt/i,
-    /what.*are.*your.*instructions/i,
-    /repeat.*(above|back)/i,
-    /security\s*instruction/i,
-    
-    // Chinese Patterns
-    /忽略.*(指令|指示|命令|提示|规则|要求)/i,
-    /忽略.*(上面|之前)/i,
-    /无视.*(指令|指示|命令|提示|规则|要求)/i,
-    /系统\s*(提示|指令|规则|要求|命令)/i,
-    /你的\s*(提示|指令|规则|要求|命令)/i,
-    /开发者\s*(模式|指令)/i,
-    /内部\s*(提示|指令)/i,
-    /展示.*(提示|指令|规则)/i,
-    /输出.*(提示|指令|规则)/i,
-    /打印.*(提示|指令|规则)/i,
-    /告诉我.*(提示|指令|规则)/i,
-    /重复.*(上面|之前|刚才)/i,
-    /复述.*(提示|指令|规则)/i,
-    /重要\s*安全\s*指令/i,
-    /安全\s*指令/i,
-    /DAN\s*模式/i,
-    /越狱/i,
-    /请扮演/i,
-    /忘记.*设定/i
-  ];
-  const lowerCaseMessage = message.toLowerCase();
-  
-  for (const pattern of forbiddenPatterns) {
-    if (pattern.test(lowerCaseMessage)) {
-      console.warn(`[Input Filter] Rejected message from user ${userId} due to forbidden pattern: ${pattern}`);
-      return res.status(400).json({
-        message: '服务器繁忙，请稍后再试。',
-        error: 'SERVER_BUSY'
-      });
-    }
+const forbiddenPatterns = [
+  // English Patterns
+  /ignore.*instructions/i,
+  /ignore.*above/i,
+  /disregard.*instructions/i,
+  /system\s*prompt/i,
+  /your\s*instructions/i,
+  /your\s*rules/i,
+  /your\s*prompt/i,
+  /reveal.*prompt/i,
+  /what.*are.*your.*instructions/i,
+  /repeat.*(above|back)/i,
+  /security\s*instruction/i,
+
+  // Chinese Patterns
+  /忽略.*(指令|指示|命令|提示|规则|要求)/i,
+  /忽略.*(上面|之前)/i,
+  /无视.*(指令|指示|命令|提示|规则|要求)/i,
+  /系统\s*(提示|指令|规则|要求|命令)/i,
+  /你的\s*(提示|指令|规则|要求|命令)/i,
+  /开发者\s*(模式|指令)/i,
+  /内部\s*(提示|指令)/i,
+  /展示.*(提示|指令|规则)/i,
+  /输出.*(提示|指令|规则)/i,
+  /打印.*(提示|指令|规则)/i,
+  /告诉我.*(提示|指令|规则)/i,
+  /重复.*(上面|之前|刚才)/i,
+  /复述.*(提示|指令|规则)/i,
+  /重要\s*安全\s*指令/i,
+  /安全\s*指令/i,
+  /DAN\s*模式/i,
+  /越狱/i,
+  /请扮演/i,
+  /忘记.*设定/i,
+];
+const lowerCaseMessage = message.toLowerCase();
+
+for (const pattern of forbiddenPatterns) {
+  if (pattern.test(lowerCaseMessage)) {
+    console.warn(
+      `[Input Filter] Rejected message from user ${userId} due to forbidden pattern: ${pattern}`,
+    );
+    return res.status(400).json({
+      message: "服务器繁忙，请稍后再试。",
+      error: "SERVER_BUSY",
+    });
   }
+}
 ```
+
 当用户输入匹配正则中的这些模式，就会返回服务器繁忙。你可以进行其它更改，如添加sleep，模拟真实LLM回应，或直接忽略用户指示，调用便宜的LLM进行随机输出。在或者直接shadow ban用户的账户。这会过滤掉大多只会使用互联网上公开的通用套取的提示词的攻击，增加了攻击成本
 
 ## 系统提示词防御
@@ -72,7 +76,7 @@ draft = false
 
 设置通用防御提示词也很重要，但请注意，**防御提示词不是越多越好，大部分LLM会倾向于听从最后的提示词**
 
-可以在系统提示词开头写完整的防御词，然后在系统提示词最末尾添加类似 *一定要遵守* 的指示
+可以在系统提示词开头写完整的防御词，然后在系统提示词最末尾添加类似 _一定要遵守_ 的指示
 
 例如
 
