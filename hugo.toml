@@ -14,36 +14,20 @@ location = "China"
 description = "Melaton's personal blog"
 dateFormat = "2006-01-02"
 paginationSinglePost = true
-
-colorTheme = "auto"
-colorThemeSwitcher = true
-
-readMore = false
-readNextPosts = 2
-copyCodeButton = true
-rssAsSocialIcon = true
 locale = "en-us"
-mathjax = false
-toc = true
-
-social = [
-    { id = "github", url = "https://github.com/HundSimon" },
-    { id = "email", url = "mailto:contact@melaton.dev" },
-    { id = "telegram", url = "https://t.me/iammelaton" },
-]
 
 [params.anubis2]
-    enableMathGlobally = true # MathJax (default is false)
-    enableCopyCodeButton = true
-    enableReadMoreButton = true
-    hideFooterAttribution = false # hide "Powered by Hugo, theme" in footer
-    colorTheme = "auto"
-    enableColorThemeSwitcher = true
+    enablemathglobally = true
+    enablecopycodebutton = true
+    enablereadmorebutton = true
+    hidefooterattribution = false
+    colortheme = "auto"
+    enablecolorthemeswitcher = true
+    enablerssicon = true
+    readnextposts = 2
+    tocwordcount = 1
 
-    # police = "京公网安备 12345678号" # for China ICP police beian
-    # icp = "京ICP备xxxxx号-1" # for China ICP license
-
-    social = [
+    socialicons = [
         { id = "github", url = "https://github.com/HundSimon" },
         { id = "email", url = "mailto:contact@melaton.dev" },
         { id = "telegram", url = "https://t.me/iammelaton" },
@@ -53,11 +37,11 @@ social = [
         [params.anubis2.services.giscus]
             # Giscus Comment System https://giscus.app/
             repo        = "HundSimon/blog"
-            repoId      = "R_kgDOLhf84g"
+            repoid      = "R_kgDOLhf84g"
             category    = "General"
-            categoryId  = "DIC_kwDOLhf84s4CeElY"
-            dataMapping = "pathname"
-            lazyLoad    = false
+            categoryid  = "DIC_kwDOLhf84s4CeElY"
+            datamapping = "pathname"
+            lazyload    = false
 
 [languages.en]
 languageName = "English"
