@@ -4,6 +4,8 @@ date = 2025-11-05T18:53:29+08:00
 draft = false
 +++
 
+分词器 Lexer
+
 <!--more-->
 
 对于编译器来说，想要识别特定的语法和逻辑，就需要用到把代码分成有意义的每一小节，这一小节被称为 token，而识别 token 的编译器部分被称为 lexical analyzer 或 lexer
